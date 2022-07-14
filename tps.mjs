@@ -7,7 +7,7 @@ const sleep = (time) => {
 
 const runAll = async () => {
   const client = await StargateClient.connect(rpc)
-  const faucet = "cosmos1d4dxxa8cj6np7hcwdpreh5rdsrr9ef09gzaq2x"
+  const faucet = "cosmos1x0lcf2zaq5802xgmzrlf2a8u5jglxdf9whx4n4"
   const startTime = Math.floor(new Date().getTime() / 1000)
   let initBalance = parseInt((await client.getAllBalances(faucet))[0].amount)
   console.log("faucet balance", initBalance)

@@ -28,6 +28,7 @@ const balanceOf = async (address) => {
   let data = await getData(`/cosmos/bank/v1beta1/balances/${address}`);
   return parseInt(data.balances[0].amount)
 }
+
 const account = async (address) => {
   let data = await getData(`/cosmos/auth/v1beta1/accounts/${address}`);
   let accountNumber = parseInt(data.account.account_number)

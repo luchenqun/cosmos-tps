@@ -78,7 +78,7 @@ const account = async (address) => {
     if (pending % 1000 == 0) {
       console.log("pending", pending, "sequence", sequence)
     }
-    if (pending % 50000 == 0) {
+    if (pending % 20000 == 0) {
       await fs.outputJson("./txs.json", txs)
     }
   }
