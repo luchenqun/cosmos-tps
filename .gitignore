@@ -1,0 +1,16 @@
+config.json
+genesis.json
+start.vbs
+stop.vbs
+startAll.vbs
+stopAll.vbs
+geth.exe
+package-lock.json
+nodes/
+node_modules/
+pwd
+temp/
+data/
+*.exe
+geth*
+txs.json
