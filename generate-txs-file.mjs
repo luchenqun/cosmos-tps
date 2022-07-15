@@ -35,12 +35,13 @@ const account = async (address) => {
   console.log(alice, sequence, accountNumber)
 
   const maxPending = 1000000; // 当交易池待上链交易最大数值
+  const file = "./txs.json"
 
   // 塞满交易池
   let pending = 0;
   let txs = [];
   try {
-    txs = await fs.readJson("./txs.json");
+    txs = await fs.readJson(file);
     let lastTx = txs[txs.length - 1]
     sequence = parseInt(lastTx.split("|")[0]) + 1
   } catch (error) {
@@ -79,8 +80,8 @@ const account = async (address) => {
       console.log("pending", pending, "sequence", sequence)
     }
     if (pending % 20000 == 0) {
-      await fs.outputJson("./txs.json", txs)
+      await fs.outputJson(file, txs)
     }
   }
-  await fs.outputJson("./txs.json", txs)
+  await fs.outputJson(file, txs)
 })()

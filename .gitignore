@@ -10,7 +10,6 @@ nodes/
 node_modules/
 pwd
 temp/
-data/
 *.exe
 geth*
 txs.json
