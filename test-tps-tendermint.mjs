@@ -14,7 +14,6 @@ const randomString = (length) => {
 }
 
 (async () => {
-
   const rpc = "ws://127.0.0.1:26657"
   const TxPoolId = 0;
   const TxId = 1;
@@ -57,6 +56,7 @@ const randomString = (length) => {
   const maxPending = 100000; // 当交易池待上链交易最大数值
   let totalSend = 0;
   let reply = 0;
+  let txStat = {}
 
   ws.on('open', function open() {
     console.log('connected');
@@ -112,20 +112,28 @@ const randomString = (length) => {
       }
     } else if (data.id == StatusId) {
       let lastHeight = parseInt(data.result.sync_info.latest_block_height)
-      blockchain.params[0] = lastHeight - 20 >= 1 ? lastHeight - 20 : lastHeight;
+      blockchain.params[0] = lastHeight - 10 >= 1 ? lastHeight - 10 : 1;
       blockchain.params[1] = lastHeight
       const blockchainStr = JSON.stringify(blockchain)
       ws.send(blockchainStr)
     } else if (data.id == BlockchainId) {
       let blockMetas = data.result.block_metas
-      let len = blockMetas.length
-      let startTime = parseInt(new Date(blockMetas[len - 1].header.time).getTime() / 1000)
+      if (!txStat.startTime) {
+        txStat.startHeight = blockMetas[blockMetas.length - 1].header.height;
+        txStat.startTime = parseInt(new Date(blockMetas[blockMetas.length - 1].header.time).getTime() / 1000)
+      }
+
+      let startTime = txStat.startTime
       let endTime = parseInt(new Date(blockMetas[0].header.time).getTime() / 1000)
-      let startHeight = blockMetas[len - 1].header.height
+      let startHeight = txStat.startHeight
       let endHeight = blockMetas[0].header.height
       let txs = 0;
       for (const block of blockMetas) {
-        txs += parseInt(block.num_txs)
+        txStat[block.header.height] = parseInt(block.num_txs)
+      }
+
+      for (let height = startHeight; height <= endHeight; height++) {
+        txs += txStat[height];
       }
       console.log(`block number ${startHeight} to ${endHeight} total txs`, txs, "tendermint tps", parseInt(txs / (endTime - startTime)))
     } else {
