@@ -117,7 +117,7 @@ laddr = "tcp://127.0.0.1:26657"
 # A list of origins a cross-domain request can be executed from
 # Default value '[]' disables cors support
 # Use '["*"]' to allow any origin
-cors-allowed-origins = ["*"]
+cors-allowed-origins = []
 
 # A list of methods the client is allowed to use with cross-domain requests
 cors-allowed-methods = ["HEAD", "GET", "POST", ]
@@ -141,7 +141,7 @@ grpc-laddr = ""
 grpc-max-open-connections = 900
 
 # Activate unsafe RPC commands like /dial-seeds and /unsafe-flush-mempool
-unsafe = true
+unsafe = false
 
 # Maximum number of simultaneous connections (including WebSocket).
 # Does not include gRPC connections. See grpc-max-open-connections
@@ -227,7 +227,9 @@ pprof-laddr = "localhost:6060"
 # Enable the legacy p2p layer.
 use-legacy = false
 
-# Select the p2p internal queue
+# Select the p2p internal queue.
+# Options are: "fifo", "simple-priority", "priority", and "wdrr"
+# with the default being "priority".
 queue-type = "priority"
 
 # Address to listen for incoming connections
@@ -280,6 +282,10 @@ max-num-outbound-peers = 10
 
 # Maximum number of connections (inbound and outbound).
 max-connections = 64
+
+# Maximum number of connections reserved for outgoing
+# connections. Must be less than max-connections
+max-outgoing-connections = 12
 
 # Rate limits the number of incoming connection attempts per IP address.
 max-incoming-connection-attempts = 100
@@ -342,7 +348,7 @@ recheck = true
 broadcast = true
 
 # Maximum number of transactions in the mempool
-size = 1500000
+size = 5000
 
 # Limit the total size of all txs in the mempool.
 # This only accounts for raw transactions (e.g. given 1MB transactions and
@@ -350,7 +356,7 @@ size = 1500000
 max-txs-bytes = 1073741824
 
 # Size of the cache (used to filter transactions we saw earlier) in transactions
-cache-size = 2000000
+cache-size = 10000
 
 # Do not remove invalid transactions from the cache (default: false)
 # Set to true if it's not possible for any invalid transaction to become valid
@@ -463,7 +469,7 @@ timeout-precommit-delta = "500ms"
 # How long we wait after committing a block, before starting on the new
 # height (this gives us a chance to receive some more precommits, even
 # though we already have +2/3).
-timeout-commit = "2s"
+timeout-commit = "5s"
 
 # How many blocks to look back to check existence of the node's consensus votes before joining consensus
 # When non-zero, the node will panic upon restart

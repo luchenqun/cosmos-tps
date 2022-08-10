@@ -1,9 +1,0 @@
-- address: cosmos1l8zdh44dznmy0f4y8sfcg3arvntuf566rrd2ym
-  name: my_validator
-  pubkey: '{"@type":"/cosmos.crypto.secp256k1.PubKey","key":"A7TUW8yaoN/N4dqoqwP59E4EdsLLhCz6Y+2GW39d5puj"}'
-honey snake order attitude grunt fuel finish immense funny holiday gospel absent net oven eyebrow option daughter reveal stairs apart solar quantum trumpet series
-
-- address: cosmos1x0lcf2zaq5802xgmzrlf2a8u5jglxdf9whx4n4
-  name: recipient
-  pubkey: '{"@type":"/cosmos.crypto.secp256k1.PubKey","key":"A5ZB5fzEHxgkbc6zHllyiJYfUDxanmox6OK1P+NIjKWC"}'
-baby burst fitness punch need crack page disorder upon ski donate want solution egg uncle equal diamond hawk midnight okay sail canal harsh move
