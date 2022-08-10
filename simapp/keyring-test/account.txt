@@ -1,0 +1,10 @@
+- address: cosmos1ywxy0p3s4vnlfxqamd65fmk9v5dujlt58c8wh2
+  name: my_validator
+  pubkey: '{"@type":"/cosmos.crypto.secp256k1.PubKey","key":"Aod5Db5KwB7MX2X+G1JduTTPjDPKQ3mpOOCAaCY3J9Pc"}'
+  type: local
+
+
+**Important** write this mnemonic phrase in a safe place.
+It is the only way to recover your account if you ever forget your password.
+
+allow room ceiling gravity flip actor early first unveil remain admit job abstract logic close dwarf drum shed grief gallery bid glove wheat enjoy
