@@ -117,7 +117,7 @@ laddr = "tcp://127.0.0.1:26657"
 # A list of origins a cross-domain request can be executed from
 # Default value '[]' disables cors support
 # Use '["*"]' to allow any origin
-cors-allowed-origins = []
+cors-allowed-origins = ["*"]
 
 # A list of methods the client is allowed to use with cross-domain requests
 cors-allowed-methods = ["HEAD", "GET", "POST", ]
@@ -348,7 +348,7 @@ recheck = true
 broadcast = true
 
 # Maximum number of transactions in the mempool
-size = 5000
+size = 1500000
 
 # Limit the total size of all txs in the mempool.
 # This only accounts for raw transactions (e.g. given 1MB transactions and
@@ -356,7 +356,7 @@ size = 5000
 max-txs-bytes = 1073741824
 
 # Size of the cache (used to filter transactions we saw earlier) in transactions
-cache-size = 10000
+cache-size = 1500000
 
 # Do not remove invalid transactions from the cache (default: false)
 # Set to true if it's not possible for any invalid transaction to become valid
